@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+
 public class Student_Main {
-    class Student {
-        int studentID;
+    public class Student {
+        String studentID;
         String firstName;
         String lastName;
         String emailAddress;
@@ -8,10 +10,10 @@ public class Student_Main {
         int[] grades;
 
         //Accessors & Mutators for each variable
-        int getStudentID (int studentID) {
+        String getStudentID (String studentID) {
             return this.studentID;
         }
-        void setStudentID(int studentID) {
+        void setStudentID(String studentID) {
             this.studentID = studentID;
         }
 
@@ -51,7 +53,7 @@ public class Student_Main {
         }
 
         //Constructor for students
-        public Student(int studentID, String firstName, String lastName,
+        public Student(String studentID, String firstName, String lastName,
                        String emailAddress, int age, int[] grades) {
             this.studentID = studentID;
             this.firstName = firstName;
@@ -62,18 +64,21 @@ public class Student_Main {
         }
 
         //Print student info
-        void print() {};
+        static void print() {};
     }
 
-    class Student_Roster {
+    static class Student_Roster {
+        ArrayList<Student> students;
+
         static public void add(String studentID, String firstName, String lastName, String emailAddress,
-                        int age, int grade1, int grade2, int grade3) {}
+                        int age, int grade1, int grade2, int grade3) {
+        }
 
         static public void remove(String studentID) {}
 
         static public void print_all() {}
 
-        static public void print_average(String studentID) {}
+        static public void print_average_grade(String studentID) {}
 
         static public void print_invalid_emails() {}
     }
@@ -91,7 +96,7 @@ public class Student_Main {
         Student_Roster.print_invalid_emails();
 
         Student_Roster.print_average_grade();
-        Student_Roster.remove(3);
-        Student_Roster.remove(3);
+        Student_Roster.remove("3");
+        Student_Roster.remove("3");
     }
 }
