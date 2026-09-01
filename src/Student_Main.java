@@ -7,6 +7,7 @@ public class Student_Main {
         int age;
         int[] grades;
 
+        //Accessors & Mutators for each variable
         int getStudentID (int studentID) {
             return this.studentID;
         }
@@ -49,10 +50,22 @@ public class Student_Main {
             this.grades = grades;
         }
 
+        //Constructor for students
+        public Student(int studentID, String firstName, String lastName, String emailAddress, int age, int[] grades) {
+            this.studentID = studentID;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.emailAddress = emailAddress;
+            this.age = age;
+            this.grades = grades;
+        }
+
+        //Print student info
         void print() {};
     }
 
     void main() {
+        //List of students
         String[] students = {"1,John,Smith,John1989@gmail.com,20,88,79,59",
                 "2,Suzan,Erickson,Erickson_1990@gmail.com,19,91,72,85",
                 "3,Jack,Napoli,The_lawyer99yahoo.com,19,85,84,87",
