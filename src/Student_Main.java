@@ -51,7 +51,8 @@ public class Student_Main {
         }
 
         //Constructor for students
-        public Student(int studentID, String firstName, String lastName, String emailAddress, int age, int[] grades) {
+        public Student(int studentID, String firstName, String lastName,
+                       String emailAddress, int age, int[] grades) {
             this.studentID = studentID;
             this.firstName = firstName;
             this.lastName = lastName;
@@ -62,6 +63,19 @@ public class Student_Main {
 
         //Print student info
         void print() {};
+    }
+
+    class Student_Roster {
+        public void add(String studentID, String firstName, String lastName, String emailAddress,
+                        int age, int grade1, int grade2, int grade3) {}
+
+        public void remove(String studentID) {}
+
+        public void print_all() {}
+
+        public void print_average(String studentID) {}
+
+        public void print_invalid_emails() {}
     }
 
     void main() {
