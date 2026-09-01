@@ -66,16 +66,16 @@ public class Student_Main {
     }
 
     class Student_Roster {
-        public void add(String studentID, String firstName, String lastName, String emailAddress,
+        static public void add(String studentID, String firstName, String lastName, String emailAddress,
                         int age, int grade1, int grade2, int grade3) {}
 
-        public void remove(String studentID) {}
+        static public void remove(String studentID) {}
 
-        public void print_all() {}
+        static public void print_all() {}
 
-        public void print_average(String studentID) {}
+        static public void print_average(String studentID) {}
 
-        public void print_invalid_emails() {}
+        static public void print_invalid_emails() {}
     }
 
     void main() {
@@ -85,5 +85,13 @@ public class Student_Main {
                 "3,Jack,Napoli,The_lawyer99yahoo.com,19,85,84,87",
                 "4,Erin,Black,Erin.black@comcast.net,22,91,98,82",
                 "5,Jessica,Murphy,jmurph91@wgu.edu,27,90,96,94"};
+
+        Student_Roster.add();
+        Student_Roster.print_all();
+        Student_Roster.print_invalid_emails();
+
+        Student_Roster.print_average_grade();
+        Student_Roster.remove(3);
+        Student_Roster.remove(3);
     }
 }
