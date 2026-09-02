@@ -62,9 +62,7 @@ public class Student_Main {
         }
 
         //Print student info
-        void print() {
-            System.out.println(Student_Roster.studentList);
-        };
+        void print() {};
     }
 
     class Student_Roster {
@@ -73,13 +71,13 @@ public class Student_Main {
         public void add(String studentID, String firstName, String lastName, String emailAddress,
                                int age, int grade1, int grade2, int grade3) {
 
-            Student.setStudentID(studentID);
-            Student.setFirstName(firstName);
-            Student.setLastName(lastName);
-            Student.setEmailAddress(emailAddress);
-            Student.setAge(age);
-
             Student student = new Student();
+            student.setStudentID(studentID);
+            student.setFirstName(firstName);
+            student.setLastName(lastName);
+            student.setEmailAddress(emailAddress);
+            student.setAge(age);
+
             studentList.add(student);
         }
 
@@ -100,15 +98,17 @@ public class Student_Main {
                 "4,Erin,Black,Erin.black@comcast.net,22,91,98,82",
                 "5,Jessica,Murphy,jmurph91@wgu.edu,27,90,96,94"};
 
+        Student_Roster studentRoster = new Student_Roster();
+
         for (String student : students) {
             String[] student_array = student.split(",");
 
-            Student_Roster.add(student_array[0], student_array[1], student_array[2], student_array[3],
+            studentRoster.add(student_array[0], student_array[1], student_array[2], student_array[3],
                     Integer.parseInt(student_array[4]), Integer.parseInt(student_array[5]),
                     Integer.parseInt(student_array[6]), Integer.parseInt(student_array[7]));
         }
 
-        Student_Roster.print_all();
+        studentRoster.print_all();
         //Student_Roster.print_invalid_emails();
 
         //Student_Roster.print_average_grade();
