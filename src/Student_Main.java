@@ -106,7 +106,20 @@ public class Student_Main {
             studentList.add(student);
         }
 
-        public void remove(String studentID) {}
+        public void remove(String studentID) {
+            int count = 0;
+
+            for (int i = 0; i < studentList.size(); i++) {
+                if (studentList.get(i).getStudentID().equals(studentID)) {
+                    studentList.remove(i);
+                    count++;
+                }
+            }
+
+            if (count == 0) {
+                System.out.println("Student ID not found.");
+            }
+        }
 
         //Prints the information for each student
         public void print_all() {
@@ -115,7 +128,15 @@ public class Student_Main {
             }
         }
 
-        public void print_average_grade(String studentID) {}
+        public void print_average_grade(String studentID) {
+            for (Student student : studentList) {
+                if (student.getStudentID().equals(studentID)) {
+                    int average = (student.getGrades()[0] +  student.getGrades()[1] + student.getGrades()[2]) / 3;
+
+                    System.out.println(student.getStudentID() + "\t" + average);
+                }
+            }
+        }
 
         public void print_invalid_emails() {
             for (Student student : studentList) {
@@ -148,8 +169,11 @@ public class Student_Main {
         studentRoster.print_all();
         studentRoster.print_invalid_emails();
 
-        //Student_Roster.print_average_grade();
-        //Student_Roster.remove("3");
-        //Student_Roster.remove("3");
+        for (String student : students) {
+            studentRoster.print_average_grade(student.substring(0, 1));
+        }
+
+        studentRoster.remove("3");
+        studentRoster.remove("3");
     }
 }
