@@ -61,29 +61,59 @@ public class Student_Main {
             this.grades = getGrades();
         }
 
-        //Print student info
-        void print() {};
+        //Print student info one at a time
+        void print() {
+            System.out.printf("%s\tFirst Name: %s\tLast Name: %s\tAge: %d\tGrades: {",
+                    getStudentID(), getFirstName(), getLastName(), getAge());
+
+            for (int i = 0; i < getGrades().length; i++) {
+                System.out.printf("%d", getGrades()[i]);
+
+                if (i != 2) {
+                    System.out.print(", ");
+                }
+                else {
+                    System.out.println("}");
+                }
+            }
+        };
     }
 
     class Student_Roster {
+        //Creates an arrayList of students
         ArrayList<Student> studentList = new ArrayList<>();
 
+        //Creates a student object with the information provided and adds it to the arrayList
         public void add(String studentID, String firstName, String lastName, String emailAddress,
                                int age, int grade1, int grade2, int grade3) {
 
+            //Makes an array of the grades provided
+            int[] grades = new int[3];
+            grades[0] = grade1;
+            grades[1] = grade2;
+            grades[2] = grade3;
+
+            //Sets the information for the student
             Student student = new Student();
             student.setStudentID(studentID);
             student.setFirstName(firstName);
             student.setLastName(lastName);
             student.setEmailAddress(emailAddress);
             student.setAge(age);
+            student.setGrades(grades);
 
+            //Adds the student to the arrayList
             studentList.add(student);
         }
 
         public void remove(String studentID) {}
 
-        public void print_all() {}
+        //Prints the information for each student
+        public void print_all() {
+            for (Student student : studentList) {
+                student.print();
+            }
+        }
 
         public void print_average_grade(String studentID) {}
 
