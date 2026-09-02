@@ -117,13 +117,20 @@ public class Student_Main {
 
         public void print_average_grade(String studentID) {}
 
-        public void print_invalid_emails() {}
+        public void print_invalid_emails() {
+            for (Student student : studentList) {
+                String email = student.getEmailAddress();
+                if (!email.contains("@") || !email.contains(".")) {
+                    System.out.println(email);
+                }
+            }
+        }
     }
 
     void main() {
         //List of students
         String[] students = {"1,John,Smith,John1989@gmail.com,20,88,79,59",
-                "2,Suzan,Erickson,Erickson_1990@gmail.com,19,91,72,85",
+                "2,Suzan,Erickson,Erickson_1990@gmailcom,19,91,72,85",
                 "3,Jack,Napoli,The_lawyer99yahoo.com,19,85,84,87",
                 "4,Erin,Black,Erin.black@comcast.net,22,91,98,82",
                 "5,Jessica,Murphy,jmurph91@wgu.edu,27,90,96,94"};
@@ -139,7 +146,7 @@ public class Student_Main {
         }
 
         studentRoster.print_all();
-        //Student_Roster.print_invalid_emails();
+        studentRoster.print_invalid_emails();
 
         //Student_Roster.print_average_grade();
         //Student_Roster.remove("3");
