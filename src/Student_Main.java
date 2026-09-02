@@ -1,8 +1,7 @@
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class Student_Main {
-    public class Student {
+    public static class Student {
         String studentID;
         String firstName;
         String lastName;
@@ -11,63 +10,63 @@ public class Student_Main {
         int[] grades;
 
         //Accessors & Mutators for each variable
-        String getStudentID () {
+        String get_student_ID () {
             return this.studentID;
         }
-        void setStudentID(String studentID) {
+        void set_student_ID(String studentID) {
             this.studentID = studentID;
         }
 
-        String getFirstName () { return this.firstName; }
-        void setFirstName (String firstName) {
+        String get_first_name () { return this.firstName; }
+        void set_first_name (String firstName) {
             this.firstName = firstName;
         }
 
-        String getLastName () {
+        String get_last_name () {
             return this.lastName;
         }
-        void setLastName (String lastName) {
+        void set_last_name (String lastName) {
             this.lastName = lastName;
         }
 
-        String getEmailAddress () {
+        String get_email_address () {
             return this.emailAddress;
         }
-        void setEmailAddress(String emailAddress) {
+        void set_email_address(String emailAddress) {
             this.emailAddress = emailAddress;
         }
 
-        int getAge () {
+        int get_age () {
             return this.age;
         }
-        void setAge (int age) {
+        void set_age (int age) {
             this.age = age;
         }
 
-        int[] getGrades () {
+        int[] get_grades () {
             return this.grades;
         }
-        void setGrades (int[] grades) {
+        void set_grades (int[] grades) {
             this.grades = grades;
         }
 
         //Constructor for students
         public Student() {
-            this.studentID = getStudentID();
-            this.firstName = getFirstName();
-            this.lastName = getLastName();
-            this.emailAddress = getEmailAddress();
-            this.age = getAge();
-            this.grades = getGrades();
+            this.studentID = get_student_ID();
+            this.firstName = get_first_name();
+            this.lastName = get_last_name();
+            this.emailAddress = get_email_address();
+            this.age = get_age();
+            this.grades = get_grades();
         }
 
         //Print student info one at a time
         void print() {
             System.out.printf("%s\tFirst Name: %s\tLast Name: %s\tAge: %d\tGrades: {",
-                    getStudentID(), getFirstName(), getLastName(), getAge());
+                    get_student_ID(), get_first_name(), get_last_name(), get_age());
 
-            for (int i = 0; i < getGrades().length; i++) {
-                System.out.printf("%d", getGrades()[i]);
+            for (int i = 0; i < get_grades().length; i++) {
+                System.out.printf("%d", get_grades()[i]);
 
                 if (i != 2) {
                     System.out.print(", ");
@@ -76,10 +75,10 @@ public class Student_Main {
                     System.out.println("}");
                 }
             }
-        };
+        }
     }
 
-    class Student_Roster {
+    static class Student_Roster {
         //Creates an arrayList of students
         ArrayList<Student> studentList = new ArrayList<>();
 
@@ -95,22 +94,23 @@ public class Student_Main {
 
             //Sets the information for the student
             Student student = new Student();
-            student.setStudentID(studentID);
-            student.setFirstName(firstName);
-            student.setLastName(lastName);
-            student.setEmailAddress(emailAddress);
-            student.setAge(age);
-            student.setGrades(grades);
+            student.set_student_ID(studentID);
+            student.set_first_name(firstName);
+            student.set_last_name(lastName);
+            student.set_email_address(emailAddress);
+            student.set_age(age);
+            student.set_grades(grades);
 
             //Adds the student to the arrayList
             studentList.add(student);
         }
 
+        //Removes a specific student from the roster if found, prints error code if not
         public void remove(String studentID) {
             int count = 0;
 
             for (int i = 0; i < studentList.size(); i++) {
-                if (studentList.get(i).getStudentID().equals(studentID)) {
+                if (studentList.get(i).get_student_ID().equals(studentID)) {
                     studentList.remove(i);
                     count++;
                 }
@@ -128,19 +128,21 @@ public class Student_Main {
             }
         }
 
+        //Calculates the average grade for each student and prints it out
         public void print_average_grade(String studentID) {
             for (Student student : studentList) {
-                if (student.getStudentID().equals(studentID)) {
-                    int average = (student.getGrades()[0] +  student.getGrades()[1] + student.getGrades()[2]) / 3;
+                if (student.get_student_ID().equals(studentID)) {
+                    int average = (student.get_grades()[0] +  student.get_grades()[1] + student.get_grades()[2]) / 3;
 
-                    System.out.println(student.getStudentID() + "\t" + average);
+                    System.out.println(student.get_student_ID() + "\t" + average);
                 }
             }
         }
 
+        //Finds invalid emails and prints them
         public void print_invalid_emails() {
             for (Student student : studentList) {
-                String email = student.getEmailAddress();
+                String email = student.get_email_address();
                 if (!email.contains("@") || !email.contains(".")) {
                     System.out.println(email);
                 }
@@ -156,8 +158,10 @@ public class Student_Main {
                 "4,Erin,Black,Erin.black@comcast.net,22,91,98,82",
                 "5,Jessica,Murphy,jmurph91@wgu.edu,27,90,96,94"};
 
+        //Creates the student roster
         Student_Roster studentRoster = new Student_Roster();
 
+        //Populates the student roster
         for (String student : students) {
             String[] student_array = student.split(",");
 
