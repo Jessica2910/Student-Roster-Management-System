@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Student_Main {
     public class Student {
@@ -10,42 +11,40 @@ public class Student_Main {
         int[] grades;
 
         //Accessors & Mutators for each variable
-        String getStudentID (String studentID) {
+        String getStudentID () {
             return this.studentID;
         }
         void setStudentID(String studentID) {
             this.studentID = studentID;
         }
 
-        String getFirstName (String firstName) {
-            return this.firstName;
-        }
+        String getFirstName () { return this.firstName; }
         void setFirstName (String firstName) {
             this.firstName = firstName;
         }
 
-        String getLastName (String lastName) {
+        String getLastName () {
             return this.lastName;
         }
         void setLastName (String lastName) {
             this.lastName = lastName;
         }
 
-        String getEmailAddress (String emailAddress) {
+        String getEmailAddress () {
             return this.emailAddress;
         }
         void setEmailAddress(String emailAddress) {
             this.emailAddress = emailAddress;
         }
 
-        int getAge (int age) {
+        int getAge () {
             return this.age;
         }
         void setAge (int age) {
             this.age = age;
         }
 
-        int[] getGrades (int[] grades) {
+        int[] getGrades () {
             return this.grades;
         }
         void setGrades (int[] grades) {
@@ -53,34 +52,44 @@ public class Student_Main {
         }
 
         //Constructor for students
-        public Student(String studentID, String firstName, String lastName,
-                       String emailAddress, int age, int[] grades) {
-            this.studentID = studentID;
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.emailAddress = emailAddress;
-            this.age = age;
-            this.grades = grades;
+        public Student() {
+            this.studentID = getStudentID();
+            this.firstName = getFirstName();
+            this.lastName = getLastName();
+            this.emailAddress = getEmailAddress();
+            this.age = getAge();
+            this.grades = getGrades();
         }
 
         //Print student info
-        static void print() {};
+        void print() {
+            System.out.println(Student_Roster.studentList);
+        };
     }
 
-    static class Student_Roster {
-        ArrayList<Student> students;
+    class Student_Roster {
+        ArrayList<Student> studentList = new ArrayList<>();
 
-        static public void add(String studentID, String firstName, String lastName, String emailAddress,
-                        int age, int grade1, int grade2, int grade3) {
+        public void add(String studentID, String firstName, String lastName, String emailAddress,
+                               int age, int grade1, int grade2, int grade3) {
+
+            Student.setStudentID(studentID);
+            Student.setFirstName(firstName);
+            Student.setLastName(lastName);
+            Student.setEmailAddress(emailAddress);
+            Student.setAge(age);
+
+            Student student = new Student();
+            studentList.add(student);
         }
 
-        static public void remove(String studentID) {}
+        public void remove(String studentID) {}
 
-        static public void print_all() {}
+        public void print_all() {}
 
-        static public void print_average_grade(String studentID) {}
+        public void print_average_grade(String studentID) {}
 
-        static public void print_invalid_emails() {}
+        public void print_invalid_emails() {}
     }
 
     void main() {
@@ -91,12 +100,19 @@ public class Student_Main {
                 "4,Erin,Black,Erin.black@comcast.net,22,91,98,82",
                 "5,Jessica,Murphy,jmurph91@wgu.edu,27,90,96,94"};
 
-        Student_Roster.add();
-        Student_Roster.print_all();
-        Student_Roster.print_invalid_emails();
+        for (String student : students) {
+            String[] student_array = student.split(",");
 
-        Student_Roster.print_average_grade();
-        Student_Roster.remove("3");
-        Student_Roster.remove("3");
+            Student_Roster.add(student_array[0], student_array[1], student_array[2], student_array[3],
+                    Integer.parseInt(student_array[4]), Integer.parseInt(student_array[5]),
+                    Integer.parseInt(student_array[6]), Integer.parseInt(student_array[7]));
+        }
+
+        Student_Roster.print_all();
+        //Student_Roster.print_invalid_emails();
+
+        //Student_Roster.print_average_grade();
+        //Student_Roster.remove("3");
+        //Student_Roster.remove("3");
     }
 }
