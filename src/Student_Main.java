@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public class Student_Main {
-    public static class Student {
-        String studentID;
-        String firstName;
-        String lastName;
-        String emailAddress;
-        int age;
-        int[] grades;
+    private static class Student {
+        private String studentID;
+        private String firstName;
+        private String lastName;
+        private String emailAddress;
+        private int age;
+        private int[] grades;
 
         //Accessors & Mutators for each variable
         String get_student_ID () {
@@ -78,12 +78,12 @@ public class Student_Main {
         }
     }
 
-    static class Student_Roster {
+    private static class Student_Roster {
         //Creates an arrayList of students
-        ArrayList<Student> studentList = new ArrayList<>();
+        private final ArrayList<Student> studentList = new ArrayList<>();
 
         //Creates a student object with the information provided and adds it to the arrayList
-        public void add(String studentID, String firstName, String lastName, String emailAddress,
+        private void add(String studentID, String firstName, String lastName, String emailAddress,
                                int age, int grade1, int grade2, int grade3) {
 
             //Makes an array of the grades provided
@@ -106,7 +106,7 @@ public class Student_Main {
         }
 
         //Removes a specific student from the roster if found, prints error code if not
-        public void remove(String studentID) {
+        private void remove(String studentID) {
             int count = 0;
 
             for (int i = 0; i < studentList.size(); i++) {
@@ -122,7 +122,7 @@ public class Student_Main {
         }
 
         //Prints the information for each student
-        public void print_all() {
+        private void print_all() {
             for (Student student : studentList) {
                 student.print();
             }
@@ -150,7 +150,7 @@ public class Student_Main {
         }
     }
 
-    void main() {
+    static void main() {
         //List of students
         String[] students = {"1,John,Smith,John1989@gmail.com,20,88,79,59",
                 "2,Suzan,Erickson,Erickson_1990@gmailcom,19,91,72,85",
